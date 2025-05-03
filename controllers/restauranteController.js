@@ -108,7 +108,7 @@ exports.deleteRestaurante = async (req, res) => {
       return res.status(404).json({ error: 'Restaurante no encontrado' });
     }
     
-    await restaurante.remove();
+    await restaurante.deleteOne();
     
     res.json({ mensaje: 'Restaurante eliminado correctamente' });
   } catch (error) {
