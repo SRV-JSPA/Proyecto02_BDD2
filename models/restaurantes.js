@@ -58,7 +58,8 @@ const restauranteSchema = new mongoose.Schema({
     default: true
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  collection: 'restaurantes'
 });
 
 
