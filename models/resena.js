@@ -28,5 +28,7 @@ const resenaSchema = new mongoose.Schema({
 
 resenaSchema.index({ comentario: 'text' });
 resenaSchema.index({ calificacion: -1 });
+resenaSchema.index({ restaurante: 1, calificacion: -1 });
+resenaSchema.index({ usuario: 1, fecha: -1 });
 
 module.exports = mongoose.model('Resena', resenaSchema);
