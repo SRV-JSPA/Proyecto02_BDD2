@@ -109,6 +109,8 @@ usuarioSchema.index({ email: 1 }, { unique: true });
 usuarioSchema.index({ nombre: 1, apellido: 1 });
 usuarioSchema.index({ 'direcciones.ubicacion': '2dsphere' });
 usuarioSchema.index({ 'preferencias.restaurantesFavoritos': 1 });
+usuarioSchema.index({ nombre: 'text', apellido: 'text', email: 'text' });
+
 
 usuarioSchema.pre('save', function(next) {
   if (this.isModified('direcciones')) {

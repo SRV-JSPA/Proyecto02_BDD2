@@ -401,3 +401,25 @@ exports.getUsuariosCercanos = async (req, res) => {
     res.status(500).json({ error: 'Error al buscar usuarios cercanos' });
   }
 };
+exports.buscarUsuarios = async (req, res) => {
+    try {
+      const { q } = req.query;
+      
+      if (!q) {
+        return res.status(400).json({ error: 'Se requiere un término de búsqueda' });
+      }
+      
+      const usuarios = await Usuario.find(
+        { $text: { $search: q } },
+        { score: { $meta: 'textScore' } }
+      )
+      .sort({ score: { $meta: 'textScore' } })
+      .limit(10)
+      .select('-metodosPago.ultimosDigitos -metodosPago.fechaExpiracion');
+      
+      res.json(usuarios);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error en la búsqueda' });
+    }
+  };
