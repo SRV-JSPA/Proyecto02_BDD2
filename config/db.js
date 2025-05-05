@@ -8,9 +8,9 @@ const connectDB = async () => {
     });
     
     console.log(`MongoDB conectado: ${conn.connection.host}`);
-
-    mongoose.set('autoIndex', false);
-
+    
+    mongoose.set('autoIndex', true);
+      
   } catch (error) {
     console.error(`Error: ${error.message}`);
     process.exit(1);
