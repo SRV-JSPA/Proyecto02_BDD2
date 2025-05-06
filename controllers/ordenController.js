@@ -97,7 +97,7 @@ exports.deleteOrden = async (req, res) => {
       return res.status(404).json({ error: 'Orden no encontrada' });
     }
 
-    await orden.remove();
+    await orden.deleteOne();
     res.json({ mensaje: 'Orden eliminada correctamente' });
   } catch (error) {
     console.error(error);
