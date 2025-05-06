@@ -94,7 +94,7 @@ exports.deleteResena = async (req, res) => {
       return res.status(404).json({ error: 'Reseña no encontrada' });
     }
 
-    await resena.remove();
+    await resena.deleteOne();
     res.json({ mensaje: 'Reseña eliminada correctamente' });
   } catch (error) {
     console.error(error);

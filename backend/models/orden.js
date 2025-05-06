@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
   articulo: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Articulo',
+    ref: 'ArticuloMenu',
     required: true
   },
   cantidad: {
@@ -42,5 +42,6 @@ const ordenSchema = new mongoose.Schema({
 ordenSchema.index({ usuario: 1, fecha: -1 });
 ordenSchema.index({ restaurante: 1 });
 ordenSchema.index({ estado: 1 });
+
 
 module.exports = mongoose.model('Orden', ordenSchema);
