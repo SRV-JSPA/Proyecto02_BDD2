@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const restauranteRoutes = require('./routes/restaurantes');
 const usuarioRoutes = require('./routes/usuarios'); 
 const resenaRoutes = require('./routes/resena'); 
+const articuloMenuRoutes = require('./routes/articulosMenu');
 
 
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/api/restaurantes', restauranteRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/resenas', resenaRoutes);
+app.use('/api/articulos-menu', articuloMenuRoutes);
 
 
 
