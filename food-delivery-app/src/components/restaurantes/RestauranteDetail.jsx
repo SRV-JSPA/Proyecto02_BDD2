@@ -31,7 +31,7 @@ const RestauranteDetail = ({ restaurante }) => {
 
   const imagenPrincipal = imagenes.length > 0 
     ? imagenes[0] 
-    : '/assets/images/default-restaurant.jpg';
+    : '../../../public/assets/images/default-restaurant.png';
 
   const galeriaImagenes = imagenes.slice(1);
 
@@ -68,7 +68,7 @@ const RestauranteDetail = ({ restaurante }) => {
             className="w-full h-full object-cover"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = '/assets/images/default-restaurant.jpg';
+              e.target.src = '../../../public/assets/images/default-restaurant.png';
             }}
           />
         </div>
@@ -104,7 +104,7 @@ const RestauranteDetail = ({ restaurante }) => {
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/assets/images/default-restaurant.jpg';
+                        e.target.src = '../../public/assets/images/default-restaurant.png';
                       }}
                     />
                   </div>

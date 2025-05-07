@@ -25,8 +25,8 @@ import OrdenesPage from './pages/Ordenes/OrdenesPage';
 import OrdenDetailPage from './pages/Ordenes/OrdenDetailPage';
 import CheckoutPage from './pages/Ordenes/CheckoutPage';
 
-//import ResenasPage from './pages/Resenas/ResenasPage';
-//import ResenaFormPage from './pages/Resenas/ResenaFormPage';
+import ResenasPage from './pages/Resenas/ResenasPage';
+import ResenaFormPage from './pages/Resenas/ResenaFormPage';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -156,32 +156,32 @@ function App() {
             } 
           />
           
-          {/* <Route 
+          <Route 
             path="/resenas" 
             element={
               <ProtectedRoute>
                 <ResenasPage />
               </ProtectedRoute>
             } 
-          /> */}
+          />
           
-          {/* <Route 
+          <Route 
             path="/resenas/nuevo/:restauranteId" 
             element={
               <ProtectedRoute>
                 <ResenaFormPage />
               </ProtectedRoute>
             } 
-          /> */}
+          />
           
-          {/* <Route 
+          <Route 
             path="/resenas/editar/:id" 
             element={
               <ProtectedRoute>
                 <ResenaFormPage />
               </ProtectedRoute>
             } 
-          /> */}
+          />
           
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

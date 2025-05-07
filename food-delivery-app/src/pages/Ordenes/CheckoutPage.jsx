@@ -116,7 +116,6 @@ const CheckoutPage = () => {
       <h1 className="text-3xl font-bold mb-8">Finalizar Pedido</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Columna izquierda - Resumen del carrito */}
         <div className="lg:col-span-2">
           <Card className="mb-8">
             <h2 className="text-xl font-semibold mb-4 pb-2 border-b">
@@ -310,12 +309,12 @@ const CheckoutPage = () => {
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-lg overflow-hidden mr-3">
                   <img
-                    src={restaurante.imagenes?.[0] || '/assets/images/default-restaurant.jpg'}
+                    src={restaurante.imagenes?.[0] || '../../public/assets/images/default-restaurant.png'}
                     alt={restaurante.nombre}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/assets/images/default-restaurant.jpg';
+                      e.target.src = '../../public/assets/images/default-restaurant.png';
                     }}
                   />
                 </div>
