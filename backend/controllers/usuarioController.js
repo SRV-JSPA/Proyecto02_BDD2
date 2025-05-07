@@ -423,3 +423,23 @@ exports.buscarUsuarios = async (req, res) => {
       res.status(500).json({ error: 'Error en la búsqueda' });
     }
   };
+
+  exports.crearMultiplesUsuarios = async (req, res) => {
+    try {
+      const nuevos = await Usuario.insertMany(req.body);
+      res.status(201).json(nuevos);
+    } catch (error) {
+      res.status(500).json({ error: 'Error al crear múltiples usuarios' });
+    }
+  };
+  
+  exports.eliminarMultiplesUsuarios = async (req, res) => {
+    try {
+      const { ids } = req.body;
+      const resultado = await Usuario.deleteMany({ _id: { $in: ids } });
+      res.json({ eliminados: resultado.deletedCount });
+    } catch (error) {
+      res.status(500).json({ error: 'Error al eliminar múltiples usuarios' });
+    }
+  };
+  

@@ -20,6 +20,7 @@ router.post('/:id/metodos-pago', usuarioController.agregarMetodoPago);
 router.delete('/:usuarioId/metodos-pago/:metodoPagoId', usuarioController.eliminarMetodoPago);
 router.post('/:id/favoritos', usuarioController.agregarRestauranteFavorito);
 router.delete('/:usuarioId/favoritos/:restauranteId', usuarioController.eliminarRestauranteFavorito);
-
+router.post('/bulk', usuarioController.crearMultiplesUsuarios);
+router.delete('/bulk', usuarioController.eliminarMultiplesUsuarios);
 
 module.exports = router;

@@ -387,3 +387,22 @@ exports.getArticulosPorDieta = async (req, res) => {
     res.status(500).json({ error: 'Error al buscar artículos por dieta' });
   }
 };
+
+exports.crearMultiplesArticulos = async (req, res) => {
+  try {
+    const nuevos = await ArticuloMenu.insertMany(req.body);
+    res.status(201).json(nuevos);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear múltiples artículos' });
+  }
+};
+
+exports.eliminarMultiplesArticulos = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    const resultado = await ArticuloMenu.deleteMany({ _id: { $in: ids } });
+    res.json({ eliminados: resultado.deletedCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eliminar múltiples artículos' });
+  }
+};

@@ -122,3 +122,22 @@ exports.buscarResenas = async (req, res) => {
     res.status(500).json({ error: 'Error en la búsqueda de reseñas' });
   }
 };
+
+exports.crearMultiplesResenas = async (req, res) => {
+  try {
+    const nuevas = await Resena.insertMany(req.body);
+    res.status(201).json(nuevas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear múltiples reseñas' });
+  }
+};
+
+exports.eliminarMultiplesResenas = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    const resultado = await Resena.deleteMany({ _id: { $in: ids } });
+    res.json({ eliminadas: resultado.deletedCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eliminar múltiples reseñas' });
+  }
+};

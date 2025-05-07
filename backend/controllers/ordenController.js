@@ -104,3 +104,22 @@ exports.deleteOrden = async (req, res) => {
     res.status(500).json({ error: 'Error al eliminar orden' });
   }
 };
+
+exports.crearMultiplesOrdenes = async (req, res) => {
+  try {
+    const nuevas = await Orden.insertMany(req.body);
+    res.status(201).json(nuevas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear múltiples órdenes' });
+  }
+};
+
+exports.eliminarMultiplesOrdenes = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    const resultado = await Orden.deleteMany({ _id: { $in: ids } });
+    res.json({ eliminadas: resultado.deletedCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eliminar múltiples órdenes' });
+  }
+};

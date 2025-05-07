@@ -23,5 +23,8 @@ router.get('/ingrediente/:ingrediente', articuloMenuController.getArticulosPorIn
 router.get('/dieta/:dieta', articuloMenuController.getArticulosPorDieta);
 
 router.post('/bulk', articuloMenuController.bulkUpdateArticulos);
+router.post('/bulk/create', articuloMenuController.crearMultiplesArticulos);
+router.delete('/bulk/delete', articuloMenuController.eliminarMultiplesArticulos);
+
 
 module.exports = router;

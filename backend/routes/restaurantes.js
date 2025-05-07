@@ -10,5 +10,7 @@ router.get('/:id', restauranteController.getRestauranteById);
 router.post('/', restauranteController.createRestaurante);
 router.put('/:id', restauranteController.updateRestaurante);
 router.delete('/:id', restauranteController.deleteRestaurante);
+router.post('/bulk', restauranteController.crearMultiplesRestaurantes);
+router.delete('/bulk', restauranteController.eliminarMultiplesRestaurantes);
 
 module.exports = router;

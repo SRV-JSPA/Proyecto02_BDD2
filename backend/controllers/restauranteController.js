@@ -167,3 +167,28 @@ exports.buscarRestaurantes = async (req, res) => {
     res.status(500).json({ error: 'Error en la búsqueda' });
   }
 };
+
+exports.crearMultiplesRestaurantes = async (req, res) => {
+  try {
+    const nuevos = await Restaurante.insertMany(req.body);
+    res.status(201).json(nuevos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al crear múltiples restaurantes' });
+  }
+};
+
+exports.eliminarMultiplesRestaurantes = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!ids || !Array.isArray(ids)) {
+      return res.status(400).json({ error: 'Debes enviar un arreglo de IDs a eliminar' });
+    }
+
+    const resultado = await Restaurante.deleteMany({ _id: { $in: ids } });
+    res.json({ eliminados: resultado.deletedCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al eliminar múltiples restaurantes' });
+  }
+};
